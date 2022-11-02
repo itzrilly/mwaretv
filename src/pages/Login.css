@@ -3,22 +3,6 @@
     height: 100vh;
 }
 
-.navbar {
-    background: rgb(88, 88, 88);
-}
-
-.navbar-container {
-    /* background-color: purple; */
-}
-
-.navbar-brand {
-    /* background: red; */
-}
-
-.logo {
-    width: 200px;
-}
-
 .login-content {
     margin-top: 50px;
     /* background-color: yellow; */
