@@ -33,7 +33,7 @@ function Login() {
                     <div>
                         <TextField 
                             id="outlined-basic"
-                            label="Téléphone" 
+                            label="Numéro de téléphone" 
                             type="tel"
                             variant="outlined" 
                             className='textfield' />
