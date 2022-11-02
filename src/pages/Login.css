@@ -1,0 +1,43 @@
+.login-container {
+    /* background: red; */
+    height: 100vh;
+}
+
+.navbar {
+    background: rgb(88, 88, 88);
+}
+
+.navbar-container {
+    /* background-color: purple; */
+}
+
+.navbar-brand {
+    /* background: red; */
+}
+
+.login-content {
+    margin-top: 50px;
+    /* background-color: yellow; */
+    display: flex;
+    justify-content: center;
+}
+
+.login-form {
+    /* background-color: purple; */
+    width: 600px;
+    padding: 10px;
+}
+
+.login-form > div {
+    margin: 10px;
+}
+
+.textfield {
+    width: 100%;
+}
+
+.login-btn {
+    width: 70%;
+    height: 50px;
+}
+
