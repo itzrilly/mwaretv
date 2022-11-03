@@ -1,10 +1,18 @@
 import React from 'react';
+import Header from '../components/Header';
+import './Message.css';
 
 function Message() {
     return (
-        <div className='message-container'>
-            <h2>This is Message page</h2>
-        </div>
+        <>
+            <Header/>
+            <div className='message-container'>
+                <div className='msg-content'>
+                    <div><h2>Votre code d'activation est le suivant:</h2></div>
+                    <div><h1>348600</h1></div>
+                </div>
+            </div>
+        </>
     );
 }
 

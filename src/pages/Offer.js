@@ -56,7 +56,15 @@ function Offer() {
                             </List>
                         </Box>
                     </div> <br/>
-                    <div><Button variant="primary" className='v-offer-btn'>Valider</Button></div>
+                    <div>
+                        <Button 
+                            variant="primary" 
+                            className='v-offer-btn'
+                            onClick={(e) => {
+                                e.preventDefault();
+                                window.location.href='./message';
+                            }}>Valider</Button>
+                    </div>
                 </div>
             </div>
         </div>
