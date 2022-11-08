@@ -30,8 +30,7 @@ function Check() {
             data : data
         };
 
-        axios(config)
-        .then(function (response) {
+        axios(config).then(function(response) {
             // alert(response.data.result);
             // console.log(JSON.stringify(response.data));
             // window.location = '/offer'
@@ -40,8 +39,7 @@ function Check() {
             }else{
                 alert('Le code de vérification entré est incorrect...');
             }
-        })
-        .catch(function (error) {
+        }).catch(function (error) {
             console.log(error);
             alert('Le code de vérification entré est incorrect...');
         });
