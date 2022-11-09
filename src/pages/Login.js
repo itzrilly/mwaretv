@@ -4,10 +4,8 @@ import Button from 'react-bootstrap/Button';
 import TextField from '@mui/material/TextField';
 import Header from '../components/Header';
 import './Login.css';
-import Offer from './Offer';
 
 function Login() {
-    
 
     const [ value, setValue ] = useState('');
 
@@ -24,6 +22,7 @@ function Login() {
                         "telephone": '+237'+value
                     }
                 });
+                localStorage.setItem('phoneNumber', JSON.stringify(value));
             // }else{
             //     alert('Veuillez entrer un numero à 9 chiffres!');
             // }
@@ -53,10 +52,12 @@ function Login() {
         });
     }
 
+    const data = 'Hi guys!';
+
     return (
         <div className='login-container'>
 
-            <Header data={value} />
+            <Header data={data} />
 
             <div className='login-content'>
                 <div className='login-form'>

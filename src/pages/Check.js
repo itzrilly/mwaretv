@@ -5,7 +5,7 @@ import Header from '../components/Header';
 import TextField from '@mui/material/TextField';
 import './Check.css'
 
-function Check() {
+function Check(props) {
 
     const [ number, setNumber ] = useState('');
 
@@ -47,11 +47,14 @@ function Check() {
 
     return (
         <div className='check-container'>
-            <Header/>
+            {/* <Header/> */}
+
+           
 
             <div className='check-content'>
                 <div><h1>Un code de vérification a été envoyé à votre numéro.</h1></div>
                 <div><h1> Veuillez entrer ce code.</h1></div> <br/>
+                <p>{props.data}</p>
                 <div>
                     <TextField 
                         inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }} 
