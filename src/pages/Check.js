@@ -32,10 +32,20 @@ function Check(props) {
 
         fetch("http://localhost:9173/checkcode", requestOptions)
         .then(response => {
+            let isPending = true;
+
             Promise.resolve({
-                data: response.json()
-            }).then(post => console.log('DATA: '+JSON.stringify(post.data)))
-            window.location = '/offer'
+                data: response.text()
+            }).then(post => {
+                isPending = false; 
+                console.log('DATA: '+JSON.stringify(post.data))
+            })
+
+            if(isPending = false){
+                window.location = '/offer'
+            }else{
+                alert('Le code de vérification entré est incorrect...');
+            }
             // console.log(response.text());
             // alert('SUCCESS')
         })
@@ -43,7 +53,7 @@ function Check(props) {
             console.log(result)
         })
         .catch(error => {
-            alert('Le code de vérification entré est incorrect...');
+            alert('Le code de vérification entré a expiré...');
             console.log('error', error)
         });
 
@@ -51,7 +61,7 @@ function Check(props) {
 
     return (
         <div className='check-container'>
-            
+
             <Header/>
 
             <div className='check-content'>
