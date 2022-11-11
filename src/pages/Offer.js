@@ -34,6 +34,33 @@ function Offer() {
             setNumber(number);
         }
 
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+
+        var raw = JSON.stringify({
+            "subscriberNumber": `${number}`,
+            "offerID": `${offerID}`
+        });
+
+        var requestOptions = {
+            method: 'POST',
+            headers: myHeaders,
+            body: raw,
+            redirect: 'follow',
+            mode: 'no-cors'
+        };
+
+        fetch("http://localhost:9173/activate", requestOptions)
+        .then(response => {
+            response.text()
+            alert('Offre activée avec succès! Vous allez recevoir les paramètres de connexion par sms.');
+        })
+        .then(result => console.log(result))
+        .catch(error => {
+            alert('Echec de transaction.');
+            console.log('error', error)
+        });
+
     }
 
     return (

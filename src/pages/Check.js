@@ -14,42 +14,45 @@ function Check(props) {
     };
 
     const checkOPT = () => {
-            //var axios = require('axios');
-            var data = JSON.stringify({
-            "data": {
-                "token": number
-            }
+
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+
+        var raw = JSON.stringify({
+            "token": `${number}`
         });
 
-        var config = {
-            method: 'post',
-            url: 'https://us-central1-blue-app-3f21e.cloudfunctions.net/auth-checkOTP',
-            headers: { 
-                'Content-Type': 'application/json'
-            },
-            data : data
+        var requestOptions = {
+            method: 'POST',
+            headers: myHeaders,
+            body: raw,
+            redirect: 'follow',
+            mode: 'no-cors'
         };
 
-        axios(config).then(function(response) {
-            // alert(response.data.result);
-            // console.log(JSON.stringify(response.data));
-            // window.location = '/offer'
-            if(response.data.result === true){
-                window.location = '/offer';
-            }else{
-                alert('Le code de vérification entré est incorrect...');
-            }
-        }).catch(function (error) {
-            console.log(error);
+        fetch("http://localhost:9173/checkcode", requestOptions)
+        .then(response => {
+            Promise.resolve({
+                data: response.json()
+            }).then(post => console.log('DATA: '+JSON.stringify(post.data)))
+            window.location = '/offer'
+            // console.log(response.text());
+            // alert('SUCCESS')
+        })
+        .then(result => {
+            console.log(result)
+        })
+        .catch(error => {
             alert('Le code de vérification entré est incorrect...');
+            console.log('error', error)
         });
+
     }
 
     return (
         <div className='check-container'>
-            {/* <Header/> */}
-
-           
+            
+            <Header/>
 
             <div className='check-content'>
                 <div><h1>Un code de vérification a été envoyé à votre numéro.</h1></div>

@@ -13,51 +13,49 @@ function Login() {
         setValue(event.target.value);
     };
 
-    const generateOTP = () => {
-        // var axios = require('axios');
+    const generateOTP = async () => {
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+        myHeaders.append("Access-Control-Allow-Methods", "POST");
+        myHeaders.append("Access-Control-Allow-Origin", "*");
+
         if(value.slice(0, 3) === '620'){
-            // if(value == 9){
-                var data = JSON.stringify({
-                    "data": {
-                        "telephone": '+237'+value
-                    }
-                });
-                localStorage.setItem('phoneNumber', JSON.stringify(value));
-            // }else{
-            //     alert('Veuillez entrer un numero à 9 chiffres!');
-            // }
+            var raw = JSON.stringify({
+                "telephone": `${value}`
+            });
+            localStorage.setItem('phoneNumber', JSON.stringify(value));
         }else{
             alert('Veuillez entrer un numero Blue de CAMTEL!');
             setValue('');
         }
 
-        // alert(data)
-
-        var config = {
-            method: 'post',
-            url: 'https://us-central1-blue-app-3f21e.cloudfunctions.net/auth-generateOTP',
-            headers: { 
-                'Content-Type': 'application/json'
-            },
-            data : data
+        var requestOptions = {
+            method: 'POST',
+            headers: myHeaders,
+            body: raw,
+            redirect: 'follow',
+            mode: 'no-cors',
         };
 
-        axios(config).then(function (response) {
-            console.log(JSON.stringify(response.data));
-            if (response.status == 200) {
-                window.location = '/check'
-            }
-        }).catch(function (error) {
-            console.log(error);
+        await fetch("http://localhost:9173/getcode", requestOptions)
+        .then(response => {
+            // console.log(response.json())
+            // alert(myString);
+            window.location = '/check'
+        })
+        .then(data => {
+            console.log(data)
+        })
+        .catch(error => {
+            console.log('ERRROORRRRR');
+            console.log('error', error)
         });
     }
-
-    const data = 'Hi guys!';
 
     return (
         <div className='login-container'>
 
-            <Header data={data} />
+            <Header/>
 
             <div className='login-content'>
                 <div className='login-form'>
@@ -74,15 +72,6 @@ function Login() {
                             onChange={onChangeHandler}
                             value={value} />
                     </div>
-                    {/* <div>
-                        <TextField
-                            id="outlined-password-input"
-                            label="Mot de passe"
-                            type="password"
-                            autoComplete="current-password"
-                            className='textfield'
-                        />
-                    </div> */}
                     
                     <div>
                         <Button 
