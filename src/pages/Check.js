@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Header from '../components/Header';
 import TextField from '@mui/material/TextField';
@@ -7,6 +7,8 @@ import './Check.css'
 import Footer from '../components/Footer';
 
 function Check(props) {
+
+    const navigate = useNavigate();
 
     const [ number, setNumber ] = useState('');
 
@@ -46,7 +48,8 @@ function Check(props) {
                 })
 
                 if(isPending = true){
-                    window.location = '/offer'
+                    // window.location = '/offer'
+                    navigate("/offer",  { replace: true });
                 }else{
                     alert('Le code de vérification entré est incorrect...');
                 }

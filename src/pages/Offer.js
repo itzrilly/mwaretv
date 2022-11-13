@@ -79,21 +79,21 @@ function Offer() {
                                     selected={selectedIndex === 1}
                                     onClick={(event) => handleListItemClick(event, 1)}
                                 >
-                                    <ListItemText primary="Blue TV 1" secondary='Journalier (24H) = SPOT 100U' />
+                                    <ListItemText primary="Blue VIU S" secondary='Journalier (24H) = SPOT 100U' />
                                 </ListItemButton>
 
                                 <ListItemButton
                                     selected={selectedIndex === 2}
                                     onClick={(event) => handleListItemClick(event, 2)}
                                 >
-                                    <ListItemText primary="Blue TV 2" secondary='Hebdomadaire (7jours) = SPOT 100U' />
+                                    <ListItemText primary="Blue VIU M" secondary='Hebdomadaire (7jours) = SPOT 100U' />
                                 </ListItemButton>
 
                                 <ListItemButton
                                     selected={selectedIndex === 3}
                                     onClick={(event) => handleListItemClick(event, 3)}
                                 >
-                                    <ListItemText primary="Blue TV 3" secondary='Mensuel (30 jours) = SPOT 100U' />
+                                    <ListItemText primary="Blue VIU L" secondary='Mensuel (30 jours) = SPOT 100U' />
                                 </ListItemButton>
                             </List>
                         </Box>

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import TextField from '@mui/material/TextField';
 import Header from '../components/Header';
@@ -6,6 +7,8 @@ import './Login.css';
 import Footer from '../components/Footer';
 
 function Login() {
+
+    const navigate = useNavigate();
 
     const [ value, setValue ] = useState('');
 
@@ -38,7 +41,8 @@ function Login() {
             .then(response => {
                 // console.log(response.json())
                 // alert(myString);
-                window.location = '/check'
+                // window.location = '/check'
+                navigate("/check", { replace: true });
             })
             .then(data => {
                 console.log(data)
@@ -61,7 +65,7 @@ function Login() {
             <div className='login-content'>
                 <div className='login-form'>
                     <div><h2>Se connecter</h2></div>
-                    <div><p>Installez l'application BlueTV disponible sur Google PlayStore et AppStore et Connectez-vous en saisissant votre numéro de téléphone.</p></div>
+                    <div><p>Installez l'application Blue VIU disponible sur Google PlayStore et AppStore et Connectez-vous en saisissant votre numéro de téléphone.</p></div>
                     <div>
                         <TextField 
                             id="outlined-basic"

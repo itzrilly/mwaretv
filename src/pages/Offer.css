@@ -45,6 +45,11 @@
     background: teal; 
 } */
 
+.list-item {
+    font-family: 'Montserrat-SemiBold';
+    font-weight: bold;
+}
+
 .v-offer-btn {
     width: 90%;
     height: 50px;
