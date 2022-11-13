@@ -1,10 +1,31 @@
+@font-face {
+    font-family: "Montserrat-Regular";
+    src: url('/public/Montserrat-Regular.ttf');
+}
+
+@font-face {
+    font-family: "Montserrat-Bold";
+    src: url('/public/Montserrat-Bold.ttf');
+}
+
+@font-face {
+    font-family: "Montserrat-SemiBold";
+    src: url('/public/Montserrat-SemiBold.ttf');
+}
+
+@font-face {
+    font-family: "Montserrat-Light";
+    src: url('/public/Montserrat-Light.ttf');
+}
+
 .login-container {
     /* background: red; */
     height: 100vh;
+    /* font-family: 'Montserrat-SemiBold'; */
 }
 
 .login-content {
-    margin-top: 50px;
+    margin-top: 70px;
     /* background-color: yellow; */
     display: flex;
     justify-content: center;
@@ -20,12 +41,21 @@
     margin: 10px;
 }
 
+h2 {
+    font-family: 'Montserrat-SemiBold';
+}
+
+p {
+    font-family: 'Montserrat-Regular';
+}
+
 .textfield {
     width: 100%;
 }
 
 .login-btn {
-    width: 70%;
+    width: 60%;
     height: 50px;
+    font-family: 'Montserrat-Regular';
 }
 

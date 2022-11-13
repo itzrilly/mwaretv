@@ -1,3 +1,28 @@
+@font-face {
+    font-family: "Montserrat-Regular";
+    src: url('/public/Montserrat-Regular.ttf');
+}
+
+@font-face {
+    font-family: "Montserrat-Bold";
+    src: url('/public/Montserrat-Bold.ttf');
+}
+
+@font-face {
+    font-family: "Montserrat-SemiBold";
+    src: url('/public/Montserrat-SemiBold.ttf');
+}
+
+@font-face {
+    font-family: "Montserrat-Light";
+    src: url('/public/Montserrat-Light.ttf');
+}
+
 .check-content {
     margin-top: 70px;
+    font-family: 'Montserrat-SemiBold';
+}
+
+.btn {
+    font-family: 'Montserrat-Regular';
 }

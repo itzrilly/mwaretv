@@ -1,6 +1,27 @@
+@font-face {
+    font-family: "Montserrat-Regular";
+    src: url('/public/Montserrat-Regular.ttf');
+}
+
+@font-face {
+    font-family: "Montserrat-Bold";
+    src: url('/public/Montserrat-Bold.ttf');
+}
+
+@font-face {
+    font-family: "Montserrat-SemiBold";
+    src: url('/public/Montserrat-SemiBold.ttf');
+}
+
+@font-face {
+    font-family: "Montserrat-Light";
+    src: url('/public/Montserrat-Light.ttf');
+}
+
 .offer-container {
     /* background: purple; */
     height: 100vh;
+    font-family: 'Montserrat-SemiBold';
 }
 
 .offer-content {
@@ -8,6 +29,16 @@
     display: flex;
     justify-content: center;
     margin-top: 60px;
+}
+
+/* .form-content{
+    background: teal;
+} */
+
+.box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* .list {

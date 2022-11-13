@@ -8,6 +8,7 @@ import Button from 'react-bootstrap/Button';
 import './Offer.css';
 import Header from '../components/Header';
 import axios from 'axios';
+import Footer from '../components/Footer';
 
 function Offer() {
 
@@ -71,28 +72,28 @@ function Offer() {
             <div class='offer-content'>
                 <div className='form-content'>
                     <div><h2>Sélectionnez une offre TV</h2></div>
-                    <div>
+                    <div className='box'>
                         <Box sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
                             <List component="nav" aria-label="forfaits" className='list'>
                                 <ListItemButton
                                     selected={selectedIndex === 1}
                                     onClick={(event) => handleListItemClick(event, 1)}
                                 >
-                                    <ListItemText primary="Blue TV 1 = SPOT 100U" secondary='Journalier (24H)' />
+                                    <ListItemText primary="Blue TV 1" secondary='Journalier (24H) = SPOT 100U' />
                                 </ListItemButton>
 
                                 <ListItemButton
                                     selected={selectedIndex === 2}
                                     onClick={(event) => handleListItemClick(event, 2)}
                                 >
-                                    <ListItemText primary="Blue TV 2 = SPOT 100U" secondary='Hebdomadaire (7jours)' />
+                                    <ListItemText primary="Blue TV 2" secondary='Hebdomadaire (7jours) = SPOT 100U' />
                                 </ListItemButton>
 
                                 <ListItemButton
                                     selected={selectedIndex === 3}
                                     onClick={(event) => handleListItemClick(event, 3)}
                                 >
-                                    <ListItemText primary="Blue TV 3 = SPOT 100U" secondary='Mensuel (30 jours)' />
+                                    <ListItemText primary="Blue TV 3" secondary='Mensuel (30 jours) = SPOT 100U' />
                                 </ListItemButton>
                             </List>
                         </Box>
@@ -106,6 +107,9 @@ function Offer() {
                     </div>
                 </div>
             </div>
+
+            <Footer/>
+
         </div>
     );
 }
