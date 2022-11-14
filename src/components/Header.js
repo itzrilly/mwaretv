@@ -10,7 +10,7 @@ function Header() {
                 <Container className='navbar-container justify-content-center'>
                     <Navbar.Brand href="#home" className='navbar-brand justify-content-center'>
                         <img
-                            src="/Blue-TV-Blue-Logo.jpeg"
+                            src="/Blue viu_White.png"
                             width="100%"
                             height="50"
                             className="logo d-inline-block align-top"

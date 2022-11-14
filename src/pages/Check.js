@@ -23,6 +23,8 @@ function Check(props) {
         }else{
             var myHeaders = new Headers();
             myHeaders.append("Content-Type", "application/json");
+            myHeaders.append("Access-Control-Allow-Origin", "*");
+            myHeaders.append("Access-Control-Allow-Methods", "POST, GET, PUT, OPTIONS");
 
             var raw = JSON.stringify({
                 "token": `${number}`
@@ -38,31 +40,31 @@ function Check(props) {
 
             fetch("http://localhost:9173/checkcode", requestOptions)
             .then(response => {
-                let isPending = true;
+
+                // console.log(response.text());
 
                 Promise.resolve({
                     data: response.text()
                 }).then(post => {
-                    isPending = false; 
-                    console.log('DATA: '+JSON.stringify(post.data))
+                    console.log('Promise DATA: '+JSON.stringify(post.data));
                 })
-
-                if(isPending = true){
-                    // window.location = '/offer'
-                    navigate("/offer",  { replace: true });
-                }else{
-                    alert('Le code de vérification entré est incorrect...');
-                }
-                // console.log(response.text());
-                // alert('SUCCESS')
+                
             })
             .then(result => {
-                console.log(result)
+                console.log(result);
+                // alert(result);
             })
             .catch(error => {
                 alert('Le code de vérification entré a expiré...');
-                console.log('error', error)
+                console.log('Error: ', error)
             });
+
+            // if(data != ''){
+            //     // window.location = '/offer'
+            //     navigate("/offer",  { replace: true });
+            // }else{
+            //     alert('Le code de vérification entré est incorrect...');
+            // }
         }
 
     }
