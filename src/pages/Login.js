@@ -24,8 +24,9 @@ function Login() {
         });
 
         var config = {
-        method: 'post',
-        url: 'http://localhost:9173/getcode',
+            method: 'post',
+            url: 'http://165.210.33.70:9173/getcode',
+            // url: 'http://localhost:9173/getcode',
         headers: { 
             'Content-Type': 'application/json'
         },

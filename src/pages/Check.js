@@ -32,7 +32,8 @@ function Check(props) {
 
             var config = {
             method: 'post',
-            url: 'http://localhost:9173/checkcode',
+            url: 'http://165.210.33.70:9173/checkcode',
+            // url: 'http://localhost:9173/checkcode',
             headers: { 
                 'Content-Type': 'application/json'
             },
