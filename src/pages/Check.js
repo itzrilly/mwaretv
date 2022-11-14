@@ -21,43 +21,66 @@ function Check(props) {
         if(number == ''){
             alert('Veuillez entrer le code de vérification.');
         }else{
-            var myHeaders = new Headers();
-            myHeaders.append("Content-Type", "application/json");
-            myHeaders.append("Access-Control-Allow-Origin", "*");
-            myHeaders.append("Access-Control-Allow-Methods", "POST, GET, PUT, OPTIONS");
 
-            var raw = JSON.stringify({
-                "token": `${number}`
+            var axios = require('axios');
+            var data = JSON.stringify({
+                "token": `${number}`,
+                "number": "620046126"
             });
 
-            var requestOptions = {
-                method: 'POST',
-                headers: myHeaders,
-                body: raw,
-                redirect: 'follow',
-                mode: 'no-cors'
+            var config = {
+            method: 'post',
+            url: 'http://localhost:9173/checkcode',
+            headers: { 
+                'Content-Type': 'application/json'
+            },
+                data : data
             };
 
-            fetch("http://localhost:9173/checkcode", requestOptions)
-            .then(response => {
-
-                // console.log(response.text());
-
-                Promise.resolve({
-                    data: response.text()
-                }).then(post => {
-                    console.log('Promise DATA: '+JSON.stringify(post.data));
-                })
-                
-            })
-            .then(result => {
-                console.log(result);
-                // alert(result);
-            })
-            .catch(error => {
-                alert('Le code de vérification entré a expiré...');
-                console.log('Error: ', error)
+            axios(config).then(function (response) {
+                console.log(JSON.stringify(response.data));
+            }).catch(function (error) {
+                console.log(error);
             });
+
+
+            // var myHeaders = new Headers();
+            // myHeaders.append("Content-Type", "application/json");
+            // myHeaders.append("Access-Control-Allow-Origin", "*");
+            // myHeaders.append("Access-Control-Allow-Methods", "POST, GET, PUT, OPTIONS");
+
+            // var raw = JSON.stringify({
+            //     "token": `${number}`
+            // });
+
+            // var requestOptions = {
+            //     method: 'POST',
+            //     headers: myHeaders,
+            //     body: raw,
+            //     redirect: 'follow',
+            //     mode: 'no-cors'
+            // };
+
+            // fetch("http://localhost:9173/checkcode", requestOptions)
+            // .then(response => {
+
+            //     // console.log(response.text());
+
+            //     Promise.resolve({
+            //         data: response.text()
+            //     }).then(post => {
+            //         console.log('Promise DATA: '+JSON.stringify(post.data));
+            //     })
+
+            // })
+            // .then(result => {
+            //     console.log(result);
+            //     // alert(result);
+            // })
+            // .catch(error => {
+            //     alert('Le code de vérification entré a expiré...');
+            //     console.log('Error: ', error)
+            // });
 
             // if(data != ''){
             //     // window.location = '/offer'
@@ -82,7 +105,7 @@ function Check(props) {
                     <TextField 
                         id="outlined-basic"
                         variant="outlined" 
-                        inputProps={{ inputMode: 'numeric', pattern: '[0-9]*', maxLength: 4 }} 
+                        inputProps={{ inputMode: 'numeric', pattern: '[0-9]*', maxLength: 6 }} 
                         label='CODE'
                         onChange={onChangeHandler}
                         value={number}
@@ -93,7 +116,7 @@ function Check(props) {
                     <Button 
                         variant = "primary"
                         className='btn'
-                        disabled={number.length < 4}
+                        disabled={number.length < 6}
                         onClick = {checkOPT}
                     >Valider</Button>
                 </div>
