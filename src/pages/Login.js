@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 import TextField from '@mui/material/TextField';
 import Header from '../components/Header';
@@ -16,45 +17,28 @@ function Login() {
         setValue(event.target.value.replace(/\D/g, ""));
     };
 
-    const generateOTP = async () => {
-        var myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json");
-        myHeaders.append("Access-Control-Allow-Methods", "POST");
-        myHeaders.append("Access-Control-Allow-Origin", "*");
+    const generateOTP = () => {
 
-        if(value.slice(0, 3) === '620'){
-            
-            var raw = JSON.stringify({
-                "telephone": `${value}`
-            });
-            localStorage.setItem('phoneNumber', JSON.stringify(value));
+        var data = JSON.stringify({
+            "telephone": value
+        });
 
-            var requestOptions = {
-                method: 'POST',
-                headers: myHeaders,
-                body: raw,
-                redirect: 'follow',
-                mode: 'no-cors',
-            };
-    
-            await fetch("http://localhost:9173/getcode", requestOptions)
-            .then(response => {
-                // console.log(response.json())
-                // alert(myString);
-                // window.location = '/check'
-                navigate("/check", { replace: true });
-            })
-            .then(data => {
-                console.log(data)
-            })
-            .catch(error => {
-                console.log('ERRROORRRRR');
-                console.log('error', error)
-            });
-        }else{
-            alert('Veuillez entrer un numero Blue de CAMTEL!');
-            setValue('');
-        }
+        var config = {
+        method: 'post',
+        url: 'http://localhost:9173/getcode',
+        headers: { 
+            'Content-Type': 'application/json'
+        },
+            data : data
+        };
+
+        axios(config).then(function (response) {
+            console.log(JSON.stringify(response.data));
+            navigate("/check", { replace: true });
+        }).catch(function (error) {
+            console.log(error);
+        });
+
     }
 
     return (

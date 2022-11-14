@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 import Header from '../components/Header';
 import TextField from '@mui/material/TextField';
@@ -22,10 +23,11 @@ function Check(props) {
             alert('Veuillez entrer le code de vérification.');
         }else{
 
-            var axios = require('axios');
+            const subscriber = JSON.parse(localStorage.getItem('phoneNumber'));
+
             var data = JSON.stringify({
                 "token": `${number}`,
-                "number": "620046126"
+                "number": `${subscriber}`
             });
 
             var config = {
@@ -39,55 +41,26 @@ function Check(props) {
 
             axios(config).then(function (response) {
                 console.log(JSON.stringify(response.data));
+
+                var json = JSON.stringify(response.data);
+                var data = JSON.parse(json);
+
+                // alert(data.authed);
+
+                if(data.authed == false) {
+                    alert('Le code de vérification entré est incorrect...');
+                }else{
+                    navigate("/offer",  { replace: true });
+                }
+                
+                // Gérer le cas ci-dessous
+                //     alert('Le code de vérification entré a expiré...');
+
             }).catch(function (error) {
+                alert('Erreur d\'authentification...')
                 console.log(error);
             });
 
-
-            // var myHeaders = new Headers();
-            // myHeaders.append("Content-Type", "application/json");
-            // myHeaders.append("Access-Control-Allow-Origin", "*");
-            // myHeaders.append("Access-Control-Allow-Methods", "POST, GET, PUT, OPTIONS");
-
-            // var raw = JSON.stringify({
-            //     "token": `${number}`
-            // });
-
-            // var requestOptions = {
-            //     method: 'POST',
-            //     headers: myHeaders,
-            //     body: raw,
-            //     redirect: 'follow',
-            //     mode: 'no-cors'
-            // };
-
-            // fetch("http://localhost:9173/checkcode", requestOptions)
-            // .then(response => {
-
-            //     // console.log(response.text());
-
-            //     Promise.resolve({
-            //         data: response.text()
-            //     }).then(post => {
-            //         console.log('Promise DATA: '+JSON.stringify(post.data));
-            //     })
-
-            // })
-            // .then(result => {
-            //     console.log(result);
-            //     // alert(result);
-            // })
-            // .catch(error => {
-            //     alert('Le code de vérification entré a expiré...');
-            //     console.log('Error: ', error)
-            // });
-
-            // if(data != ''){
-            //     // window.location = '/offer'
-            //     navigate("/offer",  { replace: true });
-            // }else{
-            //     alert('Le code de vérification entré est incorrect...');
-            // }
         }
 
     }
