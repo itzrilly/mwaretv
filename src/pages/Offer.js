@@ -35,31 +35,44 @@ function Offer() {
             setNumber(number);
         }
 
-        var myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json");
-
-        var raw = JSON.stringify({
+        var data = JSON.stringify({
             "subscriberNumber": `${number}`,
             "offerID": `${offerID}`
         });
 
-        var requestOptions = {
-            method: 'POST',
-            headers: myHeaders,
-            body: raw,
-            redirect: 'follow',
-            mode: 'no-cors'
+        var config = {
+            method: 'post',
+            // url: 'http://localhost:9173/activate',
+            url: 'http://165.210.33.70:9173/activate',
+            headers: { 
+                'Content-Type': 'application/json'
+            },
+            data : data
         };
 
-        fetch("http://localhost:9173/activate", requestOptions)
-        .then(response => {
-            response.text()
-            alert('Offre activée avec succès! Vous allez recevoir les paramètres de connexion par sms.');
-        })
-        .then(result => console.log(result))
-        .catch(error => {
-            alert('Echec de transaction.');
-            console.log('error', error)
+        axios(config) .then(function (response) {
+            // console.log(JSON.stringify(response.data));
+
+            var json = JSON.stringify(response.data);
+            var data = JSON.parse(json);
+
+            // alert(data.result.resultCode);
+
+            if(data.result.resultCode == 405000000){
+                alert('Offre activée avec succès! Vous allez recevoir vos paramètres de connexion par sms.');
+            }else if(data.result.resultCode == 405000614 ) {
+                alert('Le solde de votre compte est insuffisant.');
+            }else if(data.result.resultCode == 405000612) {
+                alert('Le service a été commandé, donc ne peut être ajouté.');
+            }else if(data.result.resultCode == 405000615) {
+                alert('Le même ensemble de package facultatif vous permet uniquement d\'en sélectionner un.');
+            }else {
+                alert('Echec de l\'opération. Veuillez réessayer plus tard.');
+            }
+
+        }).catch(function (error) {
+            // console.log(error);
+            alert('Echec de l\'opération. Veuillez réessayer plus tard.');
         });
 
     }

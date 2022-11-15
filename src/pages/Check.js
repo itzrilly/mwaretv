@@ -41,7 +41,7 @@ function Check(props) {
             };
 
             axios(config).then(function (response) {
-                console.log(JSON.stringify(response.data));
+                // console.log(JSON.stringify(response.data));
 
                 var json = JSON.stringify(response.data);
                 var data = JSON.parse(json);

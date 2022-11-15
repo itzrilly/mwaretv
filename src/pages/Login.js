@@ -34,7 +34,7 @@ function Login() {
         };
 
         axios(config).then(function (response) {
-            console.log(JSON.stringify(response.data));
+            // console.log(JSON.stringify(response.data));
             navigate("/check", { replace: true });
         }).catch(function (error) {
             console.log(error);
