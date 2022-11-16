@@ -34,8 +34,19 @@ function Login() {
         };
 
         axios(config).then(function (response) {
-            // console.log(JSON.stringify(response.data));
-            navigate("/check", { replace: true });
+            console.log(JSON.stringify(response.data));
+            var json = JSON.stringify(response.data);
+            var data = JSON.parse(json);
+
+            // alert(data.token);
+
+            if(data.secret == 'OK'  && data.token == 'OK') {
+                navigate("/check", { replace: true });
+            }else {
+                alert('Echec d\'envoi du code d\'activation. Veuillez réessayer...');
+            }
+
+            // navigate("/check", { replace: true });
         }).catch(function (error) {
             console.log(error);
         });
