@@ -32,7 +32,7 @@ function Check() {
 
             var config = {
             method: 'post',
-            url: 'http://blueviu.camtel.cm/checkcode',
+            url: 'http://blueviu.camtel.cm:9173/checkcode',
             // url: 'http://localhost:9173/checkcode',
             headers: { 
                 'Content-Type': 'application/json'
