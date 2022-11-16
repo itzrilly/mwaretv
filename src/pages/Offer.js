@@ -43,7 +43,7 @@ function Offer() {
         var config = {
             method: 'post',
             // url: 'http://localhost:9173/activate',
-            url: 'http://165.210.33.70:9173/activate',
+            url: 'http://blueviu.camtel.cm/activate',
             headers: { 
                 'Content-Type': 'application/json'
             },

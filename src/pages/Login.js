@@ -25,7 +25,7 @@ function Login() {
 
         var config = {
             method: 'post',
-            url: 'http://165.210.33.70:9173/getcode',
+            url: 'http://blueviu.camtel.cm/getcode',
             // url: 'http://localhost:9173/getcode',
         headers: { 
             'Content-Type': 'application/json'
@@ -34,13 +34,14 @@ function Login() {
         };
 
         axios(config).then(function (response) {
-            console.log(JSON.stringify(response.data));
+            // console.log(JSON.stringify(response.data));
+
             var json = JSON.stringify(response.data);
             var data = JSON.parse(json);
 
             // alert(data.token);
 
-            if(data.secret == 'OK'  && data.token == 'OK') {
+            if(data.secret == 'OK'  && data.token == 'OK' && data.sms == 'OK' ) {
                 navigate("/check", { replace: true });
             }else {
                 alert('Echec d\'envoi du code d\'activation. Veuillez réessayer...');

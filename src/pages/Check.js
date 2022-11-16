@@ -7,7 +7,7 @@ import TextField from '@mui/material/TextField';
 import './Check.css'
 import Footer from '../components/Footer';
 
-function Check(props) {
+function Check() {
 
     const navigate = useNavigate();
 
@@ -32,7 +32,7 @@ function Check(props) {
 
             var config = {
             method: 'post',
-            url: 'http://165.210.33.70:9173/checkcosde',
+            url: 'http://blueviu.camtel.cm/checkcode',
             // url: 'http://localhost:9173/checkcode',
             headers: { 
                 'Content-Type': 'application/json'
@@ -74,7 +74,6 @@ function Check(props) {
             <div className='check-content'>
                 <div><h1>Un code de vérification a été envoyé à votre numéro.</h1></div>
                 <div><h1> Veuillez entrer ce code.</h1></div> <br/>
-                <p>{props.data}</p>
                 <div>
                     <TextField 
                         id="outlined-basic"
