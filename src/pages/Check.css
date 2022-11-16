@@ -23,6 +23,13 @@
     font-family: 'Montserrat-SemiBold';
 }
 
+.regenerateOPT-btn {
+    background: #ddd;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+}
+
 .btn {
     font-family: 'Montserrat-Regular';
 }

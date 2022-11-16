@@ -36,12 +36,12 @@ function Login() {
         axios(config).then(function (response) {
             // console.log(JSON.stringify(response.data));
 
-            var json = JSON.stringify(response.data);
-            var data = JSON.parse(json);
+            // var json = JSON.stringify(response.data);
+            // var data = JSON.parse(json);
 
             // alert(data.token);
 
-            if(data.secret == 'OK'  && data.token == 'OK' && data.sms == 'OK' ) {
+            if(response.data['secret'] == 'OK'  && response.data['token'] == 'OK' && response.data['sms'] == 'OK' ) {
                 navigate("/check", { replace: true });
             }else {
                 alert('Echec d\'envoi du code d\'activation. Veuillez réessayer...');
