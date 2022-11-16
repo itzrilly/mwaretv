@@ -104,12 +104,14 @@ function Check() {
                 // var json = JSON.stringify(response.data);
                 // var data = JSON.parse(json);
 
-                // alert(data.authed);
+                // alert(response.data['authed']);
 
                 if (response.data['authed']){
+                    // alert(response.data['authed']);
                     navigate("/offer",  { replace: true });
-                }else{
-                    alert('Le code de vérification entré est incorrect...');
+                }else if(!response.data['authed']){
+                    alert(!response.data['authed']);
+                    // alert('Le code de vérification entré est incorrect...');
                 }
 
                 // Gérer le cas ci-dessous
