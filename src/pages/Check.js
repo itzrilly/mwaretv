@@ -104,7 +104,7 @@ function Check() {
                 // var json = JSON.stringify(response.data);
                 // var data = JSON.parse(json);
 
-                if (response.data['authed'] == true){
+                if (response.data['authed']){
                     navigate("/offer",  { replace: true });
                 }else {
                     alert('Le code de vérification entré est incorrect...');
