@@ -23,6 +23,8 @@ function Login() {
             "telephone": value
         });
 
+        localStorage.setItem('subscriber_number', value);
+
         var config = {
             method: 'post',
             url: 'http://blueviu.camtel.cm:9173/getcode',
@@ -36,12 +38,14 @@ function Login() {
         axios(config).then(function (response) {
             console.log(JSON.stringify(response.data));
 
+            // localStorage.setItem('subscriber_number', value);
+
             // var json = JSON.stringify(response.data);
             // var data = JSON.parse(json);
 
             // alert(data.token);
 
-            if(response.data['secret'] == 'OK'  && response.data['token'] == 'OK' && response.data['sms'] == 'OK' ) {
+            if(response.data['secret'] == 'OK'  && response.data['token'] == 'OK' ) {
                 navigate("/check", { replace: true });
             }else {
                 alert('Echec d\'envoi du code d\'activation. Veuillez réessayer...');
