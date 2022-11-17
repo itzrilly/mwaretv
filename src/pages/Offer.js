@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import List from '@mui/material/List';
 import ListItemButton from '@mui/material/ListItemButton';
@@ -12,6 +12,8 @@ import axios from 'axios';
 import Footer from '../components/Footer';
 
 function Offer() {
+
+    const navigate = useNavigate();
 
     const [ number, setNumber ] = useState('');
     const [ selectedIndex, setSelectedIndex ] = React.useState(1);
@@ -62,64 +64,40 @@ function Offer() {
 
             if(data.result.resultCode == 405000000){
                 setLoading(false);
-                return(
-                    <div className='msg'>
-                        <p>Offre activée avec succès! Vous allez recevoir vos paramètres de connexion par sms.</p> <br/>
-                        <p>Vous pouvez télécharger l'application en cliquant sur un des liens ci-dessous: </p> <br/>
-                        <p>iOS application: <Link to='/' >Blue VIU</Link></p>
-                        <p>Android application: <Link to='/' >Blue VIU</Link></p> <br/><br/>
-                        <p><Link to='/offer'>Retour en arrière</Link></p>
-                    </div>
-                )
+                localStorage.setItem('result_code', 405000000);
+                navigate("/msg", { replace: true });
                 // alert('Offre activée avec succès! Vous allez recevoir vos paramètres de connexion par sms.');
             }else if(data.result.resultCode == 405000614 ) {
                 setLoading(false);
-                return(
-                    <div className='msg-red'>
-                        <p>Le solde de votre compte est insuffisant. Veuillez recharger votre compte.</p> <br/><br/>
-                        <p><Link to='/offer'>Retour en arrière</Link></p>
-                    </div>
-                )
+                localStorage.setItem('result_code', 405000614);
+                navigate("/msg", { replace: true });
                 // alert('Le solde de votre compte est insuffisant. Veuillez recharger votre compte.');
             }else if(data.result.resultCode == 405000612) {
                 setLoading(false);
-                return(
-                    <div className='msg-red'>
-                        <p>Le service a été commandé, donc ne peut être ajouté.</p> <br/><br/>
-                        <p><Link to='/offer'>Retour en arrière</Link></p>
-                    </div>
-                )
+                localStorage.setItem('result_code', 405000612);
+                navigate("/msg", { replace: true });
                 // alert('Le service a été commandé, donc ne peut être ajouté.');
             }else if(data.result.resultCode == 405000615) {
                 setLoading(false);
-                return(
-                    <div className='msg-red'>
-                        <p>Le même ensemble de package facultatif vous permet uniquement d\'en sélectionner un.</p> <br/><br/>
-                        <p><Link to='/offer'>Retour en arrière</Link></p>
-                    </div>
-                )
+                localStorage.setItem('result_code', 405000615);
+                navigate("/msg", { replace: true });
                 // alert('Le même ensemble de package facultatif vous permet uniquement d\'en sélectionner un.');
             }else {
                 setLoading(false);
-                return(
-                    <div className='msg-red'>
-                        <p>Echec de l\'opération. Veuillez réessayer plus tard.</p> <br/><br/>
-                        <p><Link to='/offer'>Retour en arrière</Link></p>
-                    </div>
-                )
+                navigate("/msg", { replace: true });
                 // alert('Echec de l\'opération. Veuillez réessayer plus tard.');
             }
 
         }).catch(function (error) {
             // console.log(error);
             setLoading(false);
-            return(
-                <div className='msg-red'>
-                    <p>Echec de la transaction. Veuillez réessayer plus tard.</p> <br/><br/>
-                    <p><Link to='/offer'>Retour en arrière</Link></p>
-                </div>
-            )
-            // alert('Echec de la transaction. Veuillez réessayer plus tard.');
+            // return(
+            //     <div className='msg-red'>
+            //         <p>Echec de la transaction. Veuillez réessayer plus tard.</p> <br/><br/>
+            //         <p><Link to='/offer'>Retour en arrière</Link></p>
+            //     </div>
+            // )
+            alert('Echec de la transaction. Veuillez réessayer plus tard.');
         });
 
     }
