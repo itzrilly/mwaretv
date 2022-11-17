@@ -34,7 +34,7 @@ function Login() {
         };
 
         axios(config).then(function (response) {
-            // console.log(JSON.stringify(response.data));
+            console.log(JSON.stringify(response.data));
 
             // var json = JSON.stringify(response.data);
             // var data = JSON.parse(json);
@@ -84,6 +84,10 @@ function Login() {
                             disabled={value.length < 9}
                             onClick = {generateOTP}
                         >Valider</Button>
+                    </div>
+
+                    <div>
+                        <p>Cliquez sur le lien du store en bas de la page pour accéder à l'application mobile. </p>
                     </div>
                 </div>
             </div>

@@ -99,17 +99,17 @@ function Check() {
             };
 
             axios(config).then(function (response) {
-                // console.log(JSON.stringify(response.data));
+                console.log(JSON.stringify(response.data));
 
                 // var json = JSON.stringify(response.data);
                 // var data = JSON.parse(json);
 
                 // console.log(data);
 
-                // alert(data['authed']);
+                // alert(`${response.data['authed']}`);
 
-                if (response.data['authed'].toString() === 'true') {
-                    // alert(data['authed']);
+                if (`${response.data['authed']}` == 'true') {
+                    // alert('YESSSSS');
                     navigate("/offer",  { replace: true });
                 }else {
                     alert('Le code de vérification entré est incorrect...');
