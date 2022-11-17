@@ -53,3 +53,11 @@
     width: 90%;
     height: 50px;
 }
+
+.circular-progress {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 import TextField from '@mui/material/TextField';
+import CircularProgress from '@mui/material/CircularProgress';
 import Header from '../components/Header';
 import './Login.css';
 import Footer from '../components/Footer';
@@ -12,12 +13,15 @@ function Login() {
     const navigate = useNavigate();
 
     const [ value, setValue ] = useState('');
+    const [ loading, setLoading ] = useState(false);
 
     const onChangeHandler = event => {
         setValue(event.target.value.replace(/\D/g, ""));
     };
 
     const generateOTP = () => {
+
+        setLoading(true);
 
         var data = JSON.stringify({
             "telephone": value
@@ -38,24 +42,28 @@ function Login() {
         axios(config).then(function (response) {
             console.log(JSON.stringify(response.data));
 
-            // localStorage.setItem('subscriber_number', value);
-
-            // var json = JSON.stringify(response.data);
-            // var data = JSON.parse(json);
-
-            // alert(data.token);
-
-            if(response.data['secret'] == 'OK'  && response.data['token'] == 'OK' ) {
+            if(response.data['secret'] == 'OK'  && response.data['token'] == 'OK') {
+                setLoading(false);
                 navigate("/check", { replace: true });
             }else {
-                alert('Echec d\'envoi du code d\'activation. Veuillez réessayer...');
+                setLoading(false);
+                alert('Echec d\'envoi du code d\'activation. Veuillez réessayer plus tard...');
             }
 
             // navigate("/check", { replace: true });
         }).catch(function (error) {
+            alert('Erreur. Veuillez réessayer plus tard...');
             console.log(error);
         });
 
+    }
+
+    if (loading) {
+        return (
+            <div className='circular-progress'>
+                <CircularProgress />
+            </div>
+        )
     }
 
     return (

@@ -4,6 +4,7 @@ import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 import Header from '../components/Header';
 import TextField from '@mui/material/TextField';
+import CircularProgress from '@mui/material/CircularProgress';
 import './Check.css'
 import Footer from '../components/Footer';
 
@@ -12,6 +13,7 @@ function Check() {
     const navigate = useNavigate();
 
     const [ number, setNumber ] = useState('');
+    const [ loading, setLoading ] = useState(false);
 
     const onChangeHandler = event => {
         setNumber(event.target.value.replace(/\D/g, ""));
@@ -44,6 +46,8 @@ function Check() {
     }, [seconds]);
 
     const resendOTP = () => {
+        setLoading(true);
+
         setMinutes(5);
         setSeconds(1);
         
@@ -66,18 +70,23 @@ function Check() {
         axios(config).then(function (response) {
 
             if(response.data['secret'] == 'OK'  && response.data['token'] == 'OK' && response.data['sms'] == 'OK' ) {
+                setLoading(false);
                 navigate("/check", { replace: true });
             }else {
+                setLoading(false);
                 alert('Echec d\'envoi du code d\'activation. Veuillez réessayer...');
             }
             
         }).catch(function (error) {
+            setLoading(false);
             console.log(error);
         });
         
     }
 
     const checkOPT = () => {
+
+        setLoading(true);
 
         const subscriber = localStorage.getItem('subscriber_number');
 
@@ -109,28 +118,14 @@ function Check() {
             axios(config).then(function (response) {
                 console.log(JSON.stringify(response.data));
 
-                // console.log(response.data.authed);
-
                 if(response.data.authed == true) {
                     // alert('TRUE');
+                    setLoading(false);
                     navigate("/offer",  { replace: true });
                 }else{
+                    setLoading(false);
                     alert('Le code de vérification entré est incorrect...');
                 }
-
-                // var json = JSON.stringify(response.data);
-                // var data = JSON.parse(json);
-
-                // console.log(data);
-
-                // alert(`${response.data['authed']}`);
-
-                // if (response.data['authed'] == true) {
-                //     alert('YESSSSS');
-                //     // navigate("/offer",  { replace: true });
-                // }else {
-                //     alert('Le code de vérification entré est incorrect...');
-                // }
 
                 // Gérer le cas ci-dessous
                 //     alert('Le code de vérification entré a expiré...');
@@ -142,6 +137,14 @@ function Check() {
 
         }
 
+    }
+
+    if (loading) {
+        return (
+            <div className='circular-progress'>
+                <CircularProgress />
+            </div>
+        )
     }
 
     return (

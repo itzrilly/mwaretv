@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import List from '@mui/material/List';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
-import Alert from '@mui/material/Alert';
+import CircularProgress from '@mui/material/CircularProgress';
 import Button from 'react-bootstrap/Button';
 import './Offer.css';
 import Header from '../components/Header';
@@ -13,13 +13,16 @@ import Footer from '../components/Footer';
 function Offer() {
 
     const [ number, setNumber ] = useState('');
-    const [selectedIndex, setSelectedIndex] = React.useState(1);
+    const [ selectedIndex, setSelectedIndex ] = React.useState(1);
+    const [ loading, setLoading ] = useState(false);
 
     const handleListItemClick = (event, index) => {
         setSelectedIndex(index);
     };
 
     const validateOffer = () => {
+        setLoading(true);
+
         let offerID = 0;
 
         if(selectedIndex==1){
@@ -56,25 +59,37 @@ function Offer() {
             var json = JSON.stringify(response.data);
             var data = JSON.parse(json);
 
-            // alert(data.result.resultCode);
-
             if(data.result.resultCode == 405000000){
+                setLoading(false);
                 alert('Offre activée avec succès! Vous allez recevoir vos paramètres de connexion par sms.');
             }else if(data.result.resultCode == 405000614 ) {
+                setLoading(false);
                 alert('Le solde de votre compte est insuffisant.');
             }else if(data.result.resultCode == 405000612) {
+                setLoading(false);
                 alert('Le service a été commandé, donc ne peut être ajouté.');
             }else if(data.result.resultCode == 405000615) {
+                setLoading(false);
                 alert('Le même ensemble de package facultatif vous permet uniquement d\'en sélectionner un.');
             }else {
+                setLoading(false);
                 alert('Echec de l\'opération. Veuillez réessayer plus tard.');
             }
 
         }).catch(function (error) {
             // console.log(error);
+            setLoading(false);
             alert('Echec de l\'opération. Veuillez réessayer plus tard.');
         });
 
+    }
+
+    if (loading) {
+        return (
+            <div className='circular-progress'>
+                <CircularProgress />
+            </div>
+        )
     }
 
     return (
@@ -92,21 +107,21 @@ function Offer() {
                                     selected={selectedIndex === 1}
                                     onClick={(event) => handleListItemClick(event, 1)}
                                 >
-                                    <ListItemText primary="Blue VIU S" secondary='Journalier (24H) = SPOT 100U' />
+                                    <ListItemText primary="Blue VIU S" secondary='Journalier (24H) = 600U' />
                                 </ListItemButton>
 
                                 <ListItemButton
                                     selected={selectedIndex === 2}
                                     onClick={(event) => handleListItemClick(event, 2)}
                                 >
-                                    <ListItemText primary="Blue VIU M" secondary='Hebdomadaire (7jours) = SPOT 100U' />
+                                    <ListItemText primary="Blue VIU M" secondary='Hebdomadaire (7jours) = 2000U' />
                                 </ListItemButton>
 
                                 <ListItemButton
                                     selected={selectedIndex === 3}
                                     onClick={(event) => handleListItemClick(event, 3)}
                                 >
-                                    <ListItemText primary="Blue VIU L" secondary='Mensuel (30 jours) = SPOT 100U' />
+                                    <ListItemText primary="Blue VIU L" secondary='Mensuel (30 jours) = 6000U' />
                                 </ListItemButton>
                             </List>
                         </Box>
