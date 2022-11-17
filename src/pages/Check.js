@@ -101,6 +101,15 @@ function Check() {
             axios(config).then(function (response) {
                 console.log(JSON.stringify(response.data));
 
+                console.log(response.data.authed);
+
+                if(response.data.authed === true) {
+                    // alert('TRUE');
+                    navigate("/offer",  { replace: true });
+                }else{
+                    alert('Le code de vérification entré est incorrect...');
+                }
+
                 // var json = JSON.stringify(response.data);
                 // var data = JSON.parse(json);
 
@@ -108,12 +117,12 @@ function Check() {
 
                 // alert(`${response.data['authed']}`);
 
-                if (`${response.data['authed']}` == 'true') {
-                    // alert('YESSSSS');
-                    navigate("/offer",  { replace: true });
-                }else {
-                    alert('Le code de vérification entré est incorrect...');
-                }
+                // if (response.data['authed'] == true) {
+                //     alert('YESSSSS');
+                //     // navigate("/offer",  { replace: true });
+                // }else {
+                //     alert('Le code de vérification entré est incorrect...');
+                // }
 
                 // Gérer le cas ci-dessous
                 //     alert('Le code de vérification entré a expiré...');
