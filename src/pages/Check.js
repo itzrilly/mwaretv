@@ -88,6 +88,8 @@ function Check() {
                 "number": `${subscriber}`
             });
 
+            console.log(data);
+
             var config = {
                 method: 'post',
                 url: 'http://blueviu.camtel.cm:9173/checkcode',
@@ -100,6 +102,10 @@ function Check() {
 
             axios(config).then(function (response) {
                 console.log(JSON.stringify(response.data));
+
+                const subscriber = JSON.parse(localStorage.getItem('phoneNumber'));
+
+                alert('Subscriber: '+subscriber+' TOKEN: '+number);
 
                 console.log(response.data.authed);
 
