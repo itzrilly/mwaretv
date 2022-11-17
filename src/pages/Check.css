@@ -19,19 +19,30 @@
 }
 
 .check-content {
-    margin-top: 70px;
-    font-family: 'Montserrat-SemiBold';
+    margin-top: 40px;
+    /* font-family: 'Montserrat-SemiBold'; */
+}
+
+.check-content p {
+    font-family: 'Montserrat-Bold';
+    font-size: 25px;
 }
 
 .regenerateOPT-btn {
     background: #496cd2;
     border: 1px solid #0d41e1;
-    padding: 10px;
+    padding: 5px;
     border-radius: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
 }
 
 .btn {
     font-family: 'Montserrat-Regular';
+}
+
+.timer {
+    margin-top: 12px;
 }
 
 .circular-progress {

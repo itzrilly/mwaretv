@@ -153,8 +153,8 @@ function Check() {
             <Header/>
 
             <div className='check-content'>
-                <div><h1>Un code de vérification a été envoyé au numéro {subscriber}.</h1></div>
-                <div><h1> Veuillez entrer ce code.</h1></div> <br/>
+                <div><p>Un code de vérification a été envoyé au numéro {subscriber}.</p></div>
+                <div><p> Veuillez entrer ce code.</p></div> <br/>
                 <div>
                     <TextField 
                         id="outlined-basic"
@@ -173,8 +173,8 @@ function Check() {
                         disabled={number.length < 6}
                         onClick = {checkOPT}
                     >Valider</Button>
-                </div> <br/>
-
+                </div>
+                
                 <div className='timer'>
                     { seconds > 0 || minutes > 0 ? 
                         (
