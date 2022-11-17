@@ -25,8 +25,8 @@ function Login() {
 
         var config = {
             method: 'post',
-            // url: 'http://blueviu.camtel.cm:9173/getcode',
-            url: 'http://localhost:9173/getcode',
+            url: 'http://blueviu.camtel.cm:9173/getcode',
+            // url: 'http://localhost:9173/getcode',
         headers: { 
             'Content-Type': 'application/json'
         },
