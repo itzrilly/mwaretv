@@ -74,7 +74,7 @@ function Check() {
                 navigate("/check", { replace: true });
             }else {
                 setLoading(false);
-                alert('Echec d\'envoi du code d\'activation. Veuillez réessayer...');
+                alert('Echec d\'envoi du code d\'activation. Veuillez réessayer plus tard...');
             }
             
         }).catch(function (error) {
