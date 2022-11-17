@@ -12,15 +12,19 @@ function Check() {
     const navigate = useNavigate();
 
     const [ number, setNumber ] = useState('');
+    const [ subscriberN, setSubscriberN ] = useState('');
 
     const onChangeHandler = event => {
         setNumber(event.target.value.replace(/\D/g, ""));
     };
 
+    const subscriber = JSON.parse(localStorage.getItem('phoneNumber'));
+
     const [ minutes, setMinutes ] = useState(5);
     const [ seconds, setSeconds ] = useState(1);
 
     useEffect(() => {
+        setSubscriberN(subscriber);
         const interval = setInterval(() => {
             if (seconds > 0) {
                 setSeconds(seconds - 1);
@@ -53,8 +57,8 @@ function Check() {
 
         var config = {
             method: 'post',
-            url: 'http://blueviu.camtel.cm:9173/getcode',
-            // url: 'http://localhost:9173/getcode',
+            // url: 'http://blueviu.camtel.cm:9173/getcode',
+            url: 'http://localhost:9173/getcode',
         headers: { 
             'Content-Type': 'application/json'
         },
@@ -76,6 +80,8 @@ function Check() {
     }
 
     const checkOPT = () => {
+
+        // alert(subscriberN);
 
         if(number == ''){
             alert('Veuillez entrer le code de vérification.');
@@ -103,13 +109,12 @@ function Check() {
             axios(config).then(function (response) {
                 console.log(JSON.stringify(response.data));
 
-                const subscriber = JSON.parse(localStorage.getItem('phoneNumber'));
-
-                alert('Subscriber: '+subscriber+' TOKEN: '+number);
+                alert('Subscriber: '+subscriberN+' TOKEN: '+number);
 
                 console.log(response.data.authed);
 
-                if(response.data.authed === true) {
+                if(response.data.authed = true) {
+                    // alert('Subscriber: '+subscriberN+' TOKEN: '+number);
                     // alert('TRUE');
                     navigate("/offer",  { replace: true });
                 }else{
@@ -148,7 +153,7 @@ function Check() {
             <Header/>
 
             <div className='check-content'>
-                <div><h1>Un code de vérification a été envoyé à votre numéro.</h1></div>
+                <div><h1>Un code de vérification a été envoyé au numéro {subscriberN}.</h1></div>
                 <div><h1> Veuillez entrer ce code.</h1></div> <br/>
                 <div>
                     <TextField 
