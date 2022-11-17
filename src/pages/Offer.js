@@ -30,7 +30,7 @@ function Offer() {
             offerID = 209616747;
         }
 
-        const number = JSON.parse(localStorage.getItem('phoneNumber'));
+        const number = localStorage.getItem('subscriber_number');
         if (number) {
             setNumber(number);
         }
