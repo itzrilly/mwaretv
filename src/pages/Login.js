@@ -25,8 +25,8 @@ function Login() {
 
         var config = {
             method: 'post',
-            url: 'http://blueviu.camtel.cm:9173/getcode',
-            // url: 'http://localhost:9173/getcode',
+            // url: 'http://blueviu.camtel.cm:9173/getcode',
+            url: 'http://localhost:9173/getcode',
         headers: { 
             'Content-Type': 'application/json'
         },
@@ -84,10 +84,10 @@ function Login() {
                             disabled={value.length < 9}
                             onClick = {generateOTP}
                         >Valider</Button>
-                    </div>
+                    </div> <br/>
 
                     <div>
-                        <p>Cliquez sur le lien du store en bas de la page pour accéder à l'application mobile. </p>
+                        <p>Cliquez sur le lien du Store correspondant à votre device en bas de cette page pour accéder à l'application mobile. </p>
                     </div>
                 </div>
             </div>

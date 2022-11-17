@@ -98,8 +98,8 @@ function Check() {
 
             var config = {
                 method: 'post',
-                url: 'http://blueviu.camtel.cm:9173/checkcode',
-                // url: 'http://localhost:9173/checkcode',
+                // url: 'http://blueviu.camtel.cm:9173/checkcode',
+                url: 'http://localhost:9173/checkcode',
                 headers: { 
                     'Content-Type': 'application/json'
                 },
@@ -113,7 +113,7 @@ function Check() {
 
                 console.log(response.data.authed);
 
-                if(response.data.authed = true) {
+                if(response.data.authed == true) {
                     // alert('Subscriber: '+subscriberN+' TOKEN: '+number);
                     // alert('TRUE');
                     navigate("/offer",  { replace: true });
