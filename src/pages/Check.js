@@ -101,14 +101,14 @@ function Check() {
             axios(config).then(function (response) {
                 // console.log(JSON.stringify(response.data));
 
-                var json = JSON.stringify(response.data);
-                var data = JSON.parse(json);
+                // var json = JSON.stringify(response.data);
+                // var data = JSON.parse(json);
 
                 // console.log(data);
 
                 // alert(data['authed']);
 
-                if (data['authed']) {
+                if (response.data['authed'].toString() === 'true') {
                     // alert(data['authed']);
                     navigate("/offer",  { replace: true });
                 }else {
