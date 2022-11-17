@@ -89,22 +89,27 @@ function Check() {
             });
 
             var config = {
-            method: 'post',
-            url: 'http://blueviu.camtel.cm:9173/checkcode',
-            // url: 'http://localhost:9173/checkcode',
-            headers: { 
-                'Content-Type': 'application/json'
-            },
+                method: 'post',
+                url: 'http://blueviu.camtel.cm:9173/checkcode',
+                // url: 'http://localhost:9173/checkcode',
+                headers: { 
+                    'Content-Type': 'application/json'
+                },
                 data : data
             };
 
             axios(config).then(function (response) {
                 // console.log(JSON.stringify(response.data));
 
-                // var json = JSON.stringify(response.data);
-                // var data = JSON.parse(json);
+                var json = JSON.stringify(response.data);
+                var data = JSON.parse(json);
 
-                if (response.data['authed']){
+                // console.log(data);
+
+                // alert(data['authed']);
+
+                if (data['authed']) {
+                    // alert(data['authed']);
                     navigate("/offer",  { replace: true });
                 }else {
                     alert('Le code de vérification entré est incorrect...');
@@ -114,7 +119,7 @@ function Check() {
                 //     alert('Le code de vérification entré a expiré...');
 
             }).catch(function (error) {
-                alert('Erreur d\'authentification...')
+                // alert('Erreur d\'authentification...')
                 console.log(error);
             });
 
