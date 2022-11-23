@@ -3,6 +3,15 @@
     background-color: #0d41e1;
 }
 
+/* .navbar-container {
+    background: yellow;
+} */
+
 .logo {
     width: 200px;
+}
+
+.lg-div{
+    background: #fff;
+    border-radius: 10px;
 }

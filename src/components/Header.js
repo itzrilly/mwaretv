@@ -1,14 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import './Header.css';
 
 function Header() {
+
     return (
         <div className='header-nav'>
             <Navbar className='navbar'>
                 <Container className='navbar-container justify-content-center'>
-                    <Navbar.Brand href="#home" className='navbar-brand justify-content-center'>
+                    <Navbar.Brand href="/" className='navbar-brand justify-content-center'>
                         <img
                             src="/Blue viu_White.png"
                             width="100%"
@@ -21,6 +22,7 @@ function Header() {
             </Navbar>
         </div>
     );
+
 }
 
 export default Header;

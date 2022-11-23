@@ -8,7 +8,7 @@ import Header from '../components/Header';
 import './Login.css';
 import Footer from '../components/Footer';
 
-function Login() {
+function Login({ setUser }) {
 
     const navigate = useNavigate();
 
@@ -28,6 +28,7 @@ function Login() {
         });
 
         localStorage.setItem('subscriber_number', value);
+        setUser(value);
 
         var config = {
             method: 'post',
