@@ -8,7 +8,7 @@ import Message from './pages/Message';
 import { useState } from 'react';
 
 function App() {
-
+  
   const [ user, setUser ] = useState(localStorage.getItem('subscriber_number'));
 
   return (
@@ -21,7 +21,9 @@ function App() {
           <Route path='/msg' element={<Message/>} />
         </Routes>
         ) : 
-         <Login setUser={setUser} />
+        <Routes>
+          <Route path='/' element={<Login setUser={setUser} />} />
+        </Routes>
         }
       </div>
     </Router>
