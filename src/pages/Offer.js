@@ -59,16 +59,20 @@ function Offer() {
         axios(config) .then(function (response) {
             console.log(JSON.stringify(response.data));
 
-            if(response.data.subscribeCRM == 'OK'){
-                setLoading(false);
-                localStorage.setItem('result_code', 405000000);
-                navigate("/msg", { replace: true });
-            }else{
-                setLoading(false);
-                // alert('Echec d\'activation de l\'offre');
-                navigate("/msg", { replace: true });
-                console.log(response.data);
-            }
+            setLoading(false);
+            localStorage.setItem('result_code', 405000000);
+            navigate("/msg", { replace: true });
+
+            // if(response.data.subscribeCRM == 'OK'){
+            //     setLoading(false);
+            //     localStorage.setItem('result_code', 405000000);
+            //     navigate("/msg", { replace: true });
+            // }else{
+            //     setLoading(false);
+            //     // alert('Echec d\'activation de l\'offre');
+            //     navigate("/msg", { replace: true });
+            //     console.log(response.data);
+            // }
 
             // var json = JSON.stringify(response.data);
             // var data = JSON.parse(json);

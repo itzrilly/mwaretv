@@ -13,7 +13,15 @@ const Message = () => {
             <Header/>
             
             <div className='msg-content'>
-                { resultCode == 405000000 ? (
+                <div className='msg'>
+                    {/* <p>Offre activée avec succès! Vous allez recevoir vos paramètres de connexion par sms.</p> <br/> */}
+                    <p>Offre en cours de traitement! Vous allez recevoir vos paramètres de connexion par sms.</p> <br/>
+                    <p>Vous pouvez télécharger l'application en cliquant sur un des liens ci-dessous: </p> <br/>
+                    <p>iOS application: <Link to='/' >Blue VIU</Link></p>
+                    <p>Android application: <Link to='/' >Blue VIU</Link></p> <br/><br/>
+                    <p><Link to='/offer'>Retour en arrière</Link></p>
+                </div>
+                {/* { resultCode == 405000000 ? (
                     <div className='msg'>
                         <p>Offre activée avec succès! Vous allez recevoir vos paramètres de connexion par sms.</p> <br/>
                         <p>Vous pouvez télécharger l'application en cliquant sur un des liens ci-dessous: </p> <br/>
@@ -38,7 +46,7 @@ const Message = () => {
                         <p>Echec de l'opération. Veuillez réessayer plus tard.</p> <br/><br/>
                         <p><Link to='/offer'>Retour en arrière</Link></p>
                     </div>  )
-                }
+                } */}
             </div>
 
             <Footer/>
