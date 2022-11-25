@@ -59,34 +59,45 @@ function Offer() {
         axios(config) .then(function (response) {
             console.log(JSON.stringify(response.data));
 
-            var json = JSON.stringify(response.data);
-            var data = JSON.parse(json);
-
-            if(data.result.resultCode == 405000000){
+            if(response.data.subscribeCRM == 'OK'){
                 setLoading(false);
                 localStorage.setItem('result_code', 405000000);
                 navigate("/msg", { replace: true });
-                // alert('Offre activée avec succès! Vous allez recevoir vos paramètres de connexion par sms.');
-            }else if(data.result.resultCode == 405000614 ) {
+            }else{
                 setLoading(false);
-                localStorage.setItem('result_code', 405000614);
+                // alert('Echec d\'activation de l\'offre');
                 navigate("/msg", { replace: true });
-                // alert('Le solde de votre compte est insuffisant. Veuillez recharger votre compte.');
-            }else if(data.result.resultCode == 405000612) {
-                setLoading(false);
-                localStorage.setItem('result_code', 405000612);
-                navigate("/msg", { replace: true });
-                // alert('Le service a été commandé, donc ne peut être ajouté.');
-            }else if(data.result.resultCode == 405000615) {
-                setLoading(false);
-                localStorage.setItem('result_code', 405000615);
-                navigate("/msg", { replace: true });
-                // alert('Le même ensemble de package facultatif vous permet uniquement d\'en sélectionner un.');
-            }else {
-                setLoading(false);
-                navigate("/msg", { replace: true });
-                // alert('Echec de l\'opération. Veuillez réessayer plus tard.');
+                console.log(response.data);
             }
+
+            // var json = JSON.stringify(response.data);
+            // var data = JSON.parse(json);
+
+            // if(response.data.result.resultCode == 405000000){
+            //     setLoading(false);
+            //     localStorage.setItem('result_code', 405000000);
+            //     navigate("/msg", { replace: true });
+            //     // alert('Offre activée avec succès! Vous allez recevoir vos paramètres de connexion par sms.');
+            // }else if(data.result.resultCode == 405000614 ) {
+            //     setLoading(false);
+            //     localStorage.setItem('result_code', 405000614);
+            //     navigate("/msg", { replace: true });
+            //     // alert('Le solde de votre compte est insuffisant. Veuillez recharger votre compte.');
+            // }else if(data.result.resultCode == 405000612) {
+            //     setLoading(false);
+            //     localStorage.setItem('result_code', 405000612);
+            //     navigate("/msg", { replace: true });
+            //     // alert('Le service a été commandé, donc ne peut être ajouté.');
+            // }else if(data.result.resultCode == 405000615) {
+            //     setLoading(false);
+            //     localStorage.setItem('result_code', 405000615);
+            //     navigate("/msg", { replace: true });
+            //     // alert('Le même ensemble de package facultatif vous permet uniquement d\'en sélectionner un.');
+            // }else {
+            //     setLoading(false);
+            //     navigate("/msg", { replace: true });
+            //     // alert('Echec de l\'opération. Veuillez réessayer plus tard.');
+            // }
 
         }).catch(function (error) {
             // console.log(error);
