@@ -31,15 +31,62 @@
     margin-top: 60px;
 }
 
-/* .form-content{
-    background: teal;
-} */
+.form-content{
+    /* background: teal; */
+    width: 80%;
+}
 
-.box {
+.box-offer {
+    display: flex;
+    /* background: yellow; */
+    height: 300px;
+    justify-content: space-between;
+}
+
+.title {
+    height: 100%;
+    margin-right: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.title > h1 {
+    border-bottom: 2px solid #000;
+}
+
+.title > p {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.offer {
+    background-color: #0d41e1;
+    color: #fff;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.offer > h1 {
+    /* border-bottom: 2px solid #fff; */
+}
+
+.offer > h2:nth-child(4) {
+    border-top: 2px solid #fff;
+}
+
+.f-offer, .s-offer {
+    border-right: 2px solid #fff;
+}
+
+/* .box {
     display: flex;
     align-items: center;
     justify-content: center;
-}
+} */
 
 /* .list {
     background: teal; 
@@ -50,8 +97,14 @@
 } */
 
 .v-offer-btn {
-    width: 90%;
     height: 50px;
+    background: #fff;
+    color: #0d41e1;
+}
+
+.v-offer-btn:hover {
+    background-color: #0d41e1;
+    color: #fff;
 }
 
 .circular-progress {
@@ -60,4 +113,30 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+@media only screen and (max-width: 650px) {
+
+    .offer-content {
+        height: 1000px;
+    }
+
+    .box-offer {
+        justify-content: space-between;
+        flex-direction: column;
+    }
+
+    .box-offer > .title{
+        display: none;
+    }
+
+    .offer {
+        margin: 20px;
+        padding: 30px;
+    }
+
+    .t-offer {
+        margin-bottom: 200px;
+    }
+    
 }

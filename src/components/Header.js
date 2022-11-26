@@ -20,7 +20,7 @@ function Header({ signOut }) {
                         />
                     </Navbar.Brand>
                     { window.location.pathname=='/' ? '' :
-                        (<div className='log-out-btn' onClick={signOut}><LogoutIcon/> Déconnexion</div>)
+                        (<div className='log-out-btn' onClick={signOut}><LogoutIcon/> <span>Déconnexion</span></div>)
                     }
                 </Container>
             </Navbar>

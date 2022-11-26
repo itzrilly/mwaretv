@@ -131,7 +131,7 @@ function Check() {
                 //     alert('Le code de vérification entré a expiré...');
 
             }).catch(function (error) {
-                // alert('Erreur d\'authentification...')
+                alert('Echec d\'authentification...')
                 console.log(error);
             });
 

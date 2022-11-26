@@ -16,25 +16,25 @@ function Offer({ signOut }) {
     const navigate = useNavigate();
 
     const [ number, setNumber ] = useState('');
-    const [ selectedIndex, setSelectedIndex ] = React.useState(1);
+    // const [ selectedIndex, setSelectedIndex ] = React.useState(1);
     const [ loading, setLoading ] = useState(false);
 
-    const handleListItemClick = (event, index) => {
-        setSelectedIndex(index);
-    };
+    // const handleListItemClick = (event, index) => {
+    //     setSelectedIndex(index);
+    // };
 
-    const validateOffer = () => {
+    const validateOffer = (offerID) => {
         setLoading(true);
 
-        let offerID = 0;
+        // let offerID = 0;
 
-        if(selectedIndex==1){
-            offerID = 209616745;
-        }else if(selectedIndex==2){
-            offerID = 209616746;
-        }else{
-            offerID = 209616747;
-        }
+        // if(selectedIndex==1){
+        //     offerID = 209616745;
+        // }else if(selectedIndex==2){
+        //     offerID = 209616746;
+        // }else{
+        //     offerID = 209616747;
+        // }
 
         const number = localStorage.getItem('subscriber_number');
         if (number) {
@@ -56,63 +56,37 @@ function Offer({ signOut }) {
             data : data
         };
 
-        axios(config) .then(function (response) {
-            console.log(JSON.stringify(response.data));
+        axios(config).then(function (response) {
 
-            setLoading(false);
-            localStorage.setItem('result_code', 405000000);
-            navigate("/msg", { replace: true });
-
-            // if(response.data.subscribeCRM == 'OK'){
-            //     setLoading(false);
-            //     localStorage.setItem('result_code', 405000000);
-            //     navigate("/msg", { replace: true });
-            // }else{
-            //     setLoading(false);
-            //     // alert('Echec d\'activation de l\'offre');
-            //     navigate("/msg", { replace: true });
-            //     console.log(response.data);
-            // }
-
-            // var json = JSON.stringify(response.data);
-            // var data = JSON.parse(json);
-
-            // if(response.data.result.resultCode == 405000000){
-            //     setLoading(false);
-            //     localStorage.setItem('result_code', 405000000);
-            //     navigate("/msg", { replace: true });
-            //     // alert('Offre activée avec succès! Vous allez recevoir vos paramètres de connexion par sms.');
-            // }else if(data.result.resultCode == 405000614 ) {
-            //     setLoading(false);
-            //     localStorage.setItem('result_code', 405000614);
-            //     navigate("/msg", { replace: true });
-            //     // alert('Le solde de votre compte est insuffisant. Veuillez recharger votre compte.');
-            // }else if(data.result.resultCode == 405000612) {
-            //     setLoading(false);
-            //     localStorage.setItem('result_code', 405000612);
-            //     navigate("/msg", { replace: true });
-            //     // alert('Le service a été commandé, donc ne peut être ajouté.');
-            // }else if(data.result.resultCode == 405000615) {
-            //     setLoading(false);
-            //     localStorage.setItem('result_code', 405000615);
-            //     navigate("/msg", { replace: true });
-            //     // alert('Le même ensemble de package facultatif vous permet uniquement d\'en sélectionner un.');
-            // }else {
-            //     setLoading(false);
-            //     navigate("/msg", { replace: true });
-            //     // alert('Echec de l\'opération. Veuillez réessayer plus tard.');
-            // }
+            if(response.data.subscribeCRM.status == true) {
+                if(response.data.checkExistMWare.status == true) {
+                    if(response.data.getSubscriberDetails.status == false) {
+                        setLoading(false);
+                        localStorage.setItem('result_code', 0);
+                        navigate("/msg", { replace: true });
+                    }else{
+                        setLoading(false);
+                        localStorage.setItem('result_code', 3);
+                        navigate("/msg", { replace: true });
+                        console.log(response.data);
+                    }
+                }else{
+                    setLoading(false);
+                    localStorage.setItem('result_code', 2);
+                    navigate("/msg", { replace: true });
+                    console.log(response.data);
+                }
+            }else{
+                setLoading(false);
+                localStorage.setItem('result_code', 1);
+                navigate("/msg", { replace: true });
+                console.log(response.data);
+            }
 
         }).catch(function (error) {
-            // console.log(error);
+            console.log(error);
             setLoading(false);
-            // return(
-            //     <div className='msg-red'>
-            //         <p>Echec de la transaction. Veuillez réessayer plus tard.</p> <br/><br/>
-            //         <p><Link to='/offer'>Retour en arrière</Link></p>
-            //     </div>
-            // )
-            alert('Echec de la transaction. Veuillez réessayer plus tard.');
+            alert('Transaction échouée. Veuillez réessayer plus tard.');
         });
 
     }
@@ -132,8 +106,52 @@ function Offer({ signOut }) {
 
             <div class='offer-content'>
                 <div className='form-content'>
-                    <div><h2>Sélectionnez une offre TV</h2></div>
-                    <div className='box'>
+                    <div><h1>Sélectionnez une offre Blue VIU</h1></div> <br/>
+
+                    <div className='box-offer'>
+                        <div className='title'>
+                            <h1>Forfaits</h1>
+                            <p>Chaines phares</p>
+                            <p>Validité</p>
+                            <p>Prix</p>
+                            <p>*</p>
+                        </div>
+                        <div className='offer f-offer'>
+                            <h1>S</h1>
+                            <p>SuperSport 1</p>
+                            <p>24H</p>
+                            <p>600 U</p>
+                            <Button 
+                                variant="primary" 
+                                className='v-offer-btn'
+                                onClick={() => validateOffer(209616745)}
+                            >Valider</Button>
+                        </div>
+                        <div className='offer s-offer'>
+                            <h1>M</h1>
+                            <p>SuperSport 1 & 2</p>
+                            <p>7 Jours</p>
+                            <p>2000 U</p>
+                            <Button 
+                                variant="primary" 
+                                className='v-offer-btn'
+                                onClick={() => validateOffer(209616746)}
+                            >Valider</Button>
+                        </div>
+                        <div className='offer t-offer'>
+                            <h1>L</h1>
+                            <p>SuperSport 1, 2 & 3</p>
+                            <p>30 Jours</p>
+                            <p>6000 U</p>
+                            <Button 
+                                variant="primary" 
+                                className='v-offer-btn'
+                                onClick={() => validateOffer(209616747)}
+                            >Valider</Button>
+                        </div>
+                    </div>
+
+                    {/* <div className='box'>
                         <Box sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
                             <List component="nav" aria-label="forfaits" className='list'>
                                 <ListItemButton
@@ -158,14 +176,14 @@ function Offer({ signOut }) {
                                 </ListItemButton>
                             </List>
                         </Box>
-                    </div> <br/>
-                    <div>
+                    </div> <br/> */}
+                    {/* <div>
                         <Button 
                             variant="primary" 
                             className='v-offer-btn'
                             onClick={validateOffer}
                         >Valider</Button>
-                    </div>
+                    </div> */}
                 </div>
             </div>
 
