@@ -11,7 +11,7 @@ import Header from '../components/Header';
 import axios from 'axios';
 import Footer from '../components/Footer';
 
-function Offer() {
+function Offer({ signOut }) {
 
     const navigate = useNavigate();
 
@@ -128,7 +128,7 @@ function Offer() {
     return (
         <div className='offer-container'>
 
-            <Header/>
+            <Header signOut={signOut} />
 
             <div class='offer-content'>
                 <div className='form-content'>

@@ -4,13 +4,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import LogoutIcon from '@mui/icons-material/Logout';
 import './Header.css';
 
-function Header() {
-
-    // console.log(window.location.pathname); 
-
-    if(window.location.pathname=='/'){
-        console.log('Login page');
-    }
+function Header({ signOut }) {
 
     return (
         <div className='header-nav'>
@@ -26,7 +20,7 @@ function Header() {
                         />
                     </Navbar.Brand>
                     { window.location.pathname=='/' ? '' :
-                        (<div className='log-out-btn'><LogoutIcon/> Déconnexion</div>)
+                        (<div className='log-out-btn' onClick={signOut}><LogoutIcon/> Déconnexion</div>)
                     }
                 </Container>
             </Navbar>

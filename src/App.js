@@ -11,14 +11,20 @@ function App() {
   
   const [ user, setUser ] = useState(localStorage.getItem('subscriber_number'));
 
+  const signOut = () => {
+    setUser(null);
+    localStorage.removeItem('subscriber_number');
+    window.location = '/';
+  }
+
   return (
     <Router>
       <div className="App">
         { user ? (
         <Routes>
           <Route path='/check' element={<Check/>} />
-          <Route path='/offer' element={<Offer/>} />
-          <Route path='/msg' element={<Message/>} />
+          <Route path='/offer' element={<Offer signOut={signOut} />} />
+          <Route path='/msg' element={<Message signOut={signOut} />} />
         </Routes>
         ) : 
         <Routes>

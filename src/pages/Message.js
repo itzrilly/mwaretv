@@ -4,13 +4,13 @@ import Footer from '../components/Footer';
 import Header from '../components/Header';
 import './Message.css';
 
-const Message = () => {
+const Message = ({ signOut }) => {
 
     const resultCode = localStorage.getItem('result_code');
 
     return (
         <div className='msg-container'>
-            <Header/>
+            <Header signOut={signOut} />
             
             <div className='msg-content'>
                 <div className='msg'>
