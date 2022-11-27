@@ -61,17 +61,21 @@
 }
 
 .offer {
-    background-color: #0d41e1;
-    color: #fff;
+    background-color: #fff;
+    border-top: 2px solid #000;
+    border-right: 2px solid #000;
+    border-left: 2px solid #000;
+    /* color: #0d41e1; */
     height: 100%;
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    font-weight: bold;
 }
 
 .offer > h1 {
-    /* border-bottom: 2px solid #fff; */
+    border-bottom: 2px solid #000;
 }
 
 .offer > h2:nth-child(4) {
@@ -118,12 +122,14 @@
 @media only screen and (max-width: 650px) {
 
     .offer-content {
-        height: 1000px;
+        height: 1200px;
+        /* background: red; */
     }
 
     .box-offer {
-        justify-content: space-between;
         flex-direction: column;
+        /* justify-content: space-between; */
+        margin-left: -45px;
     }
 
     .box-offer > .title{
@@ -133,6 +139,10 @@
     .offer {
         margin: 20px;
         padding: 30px;
+    }
+
+    .offer {
+        border: 2px solid #000;
     }
 
     .t-offer {
