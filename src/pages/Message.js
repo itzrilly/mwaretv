@@ -24,14 +24,16 @@ const Message = ({ signOut }) => {
                     <div className='msg-red'>
                         <p>Le solde de votre compte est insuffisant. Veuillez recharger votre compte.</p> <br/><br/>
                         <p><Link to='/offer'>Retour en arrière</Link></p>
-                    </div> ) : resultCode == 2 ? (
+                    </div> ) 
+                    // : resultCode == 2 ? (
+                    // <div className='msg-red'>
+                    //     <p>Impossible d'ajouter le client dans la plateforme TV.</p> <br/><br/>
+                    //     <p><Link to='/offer'>Retour en arrière</Link></p>
+                    // </div>
+                    // ) 
+                    : resultCode == 3 ? (
                     <div className='msg-red'>
-                        <p>Echec d'envoi des paramètres de connexion</p> <br/><br/>
-                        <p><Link to='/offer'>Retour en arrière</Link></p>
-                    </div>
-                    ) : resultCode == 3 ? (
-                    <div className='msg-red'>
-                        <p>Le serveur met trop de temps à répondre, vous devrez déjà avoir réçu vos paramètres de connexion. Veuillez vérifier les messages réçus dans votre téléphone.</p> <br/><br/>
+                        <p>Echec d'envoi des paramètres de connexion par le serveur distant.</p> <br/><br/>
                         <p><Link to='/offer'>Retour en arrière</Link></p>
                     </div> ) : (
                     <div className='msg-red'>

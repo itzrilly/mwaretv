@@ -58,11 +58,11 @@ function Offer({ signOut }) {
 
         axios(config).then(function (response) {
 
-            console.log(response.data);
+            // console.log(response.data);
 
             if(response.data.subscribeCRM.status == true) {
-                if(response.data.checkExistMWare.status == true) {
-                    if(response.data.smstoUser.status == true) {
+                // if(response.data.addCustomerMWare.status == true) {
+                    if(response.data.sendSMStoUser.status == true) {
                         setLoading(false);
                         localStorage.setItem('result_code', 0);
                         navigate("/msg", { replace: true });
@@ -72,12 +72,12 @@ function Offer({ signOut }) {
                         navigate("/msg", { replace: true });
                         console.log(response.data);
                     }
-                }else{
-                    setLoading(false);
-                    localStorage.setItem('result_code', 2);
-                    navigate("/msg", { replace: true });
-                    console.log(response.data);
-                }
+                // }else{
+                    // setLoading(false);
+                    // localStorage.setItem('result_code', 2);
+                    // navigate("/msg", { replace: true });
+                    // console.log(response.data);
+                // }
             }else{
                 setLoading(false);
                 localStorage.setItem('result_code', 1);
@@ -119,36 +119,93 @@ function Offer({ signOut }) {
                             <p>*</p>
                         </div>
                         <div className='offer f-offer'>
-                            <h1>S</h1>
-                            <p>SuperSport 1</p>
+                            <h1>Blue VIU S</h1>
+                            <p>
+                                <img
+                                    src="/s1.jpeg"
+                                    width="60"
+                                    height="60"
+                                    alt=""
+                                />
+                                 <img
+                                    src="/s2.jpeg"
+                                    width="60"
+                                    height="60"
+                                    alt=""
+                                />
+                                 <img
+                                    src="/s3.jpeg"
+                                    width="60"
+                                    height="60"
+                                    alt=""
+                                />
+                            </p>
                             <p>24H</p>
                             <p>600 U</p>
                             <Button 
                                 variant="primary" 
                                 className='v-offer-btn'
-                                onClick={() => validateOffer(209616747)}
+                                onClick={() => validateOffer(209618706)}
                             >Valider</Button>
                         </div>
                         <div className='offer s-offer'>
-                            <h1>M</h1>
-                            <p>SuperSport 1 & 2</p>
+                            <h1>Blue VIU M</h1>
+                            <p>
+                                <img
+                                    src="/s1.jpeg"
+                                    width="60"
+                                    height="60"
+                                    alt=""
+                                />
+                                 <img
+                                    src="/s2.jpeg"
+                                    width="60"
+                                    height="60"
+                                    alt=""
+                                />
+                                 <img
+                                    src="/s3.jpeg"
+                                    width="60"
+                                    height="60"
+                                    alt=""
+                                />
+                            </p>
                             <p>7 Jours</p>
                             <p>2000 U</p>
                             <Button 
                                 variant="primary" 
                                 className='v-offer-btn'
-                                onClick={() => validateOffer(209616747)}
+                                onClick={() => validateOffer(209618707)}
                             >Valider</Button>
                         </div>
                         <div className='offer t-offer'>
-                            <h1>L</h1>
-                            <p>SuperSport 1, 2 & 3</p>
+                            <h1>Blue VIU L</h1>
+                            <p>
+                                <img
+                                    src="/s1.jpeg"
+                                    width="60"
+                                    height="60"
+                                    alt=""
+                                />
+                                 <img
+                                    src="/s2.jpeg"
+                                    width="60"
+                                    height="60"
+                                    alt=""
+                                />
+                                 <img
+                                    src="/s3.jpeg"
+                                    width="60"
+                                    height="60"
+                                    alt=""
+                                />
+                            </p>
                             <p>30 Jours</p>
                             <p>6000 U</p>
                             <Button 
                                 variant="primary" 
                                 className='v-offer-btn'
-                                onClick={() => validateOffer(209616747)}
+                                onClick={() => validateOffer(209618708)}
                             >Valider</Button>
                         </div>
                     </div>

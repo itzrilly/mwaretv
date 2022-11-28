@@ -76,6 +76,7 @@
 
 .offer > h1 {
     border-bottom: 2px solid #000;
+    color: #0d41e1;
 }
 
 .offer > h2:nth-child(4) {
