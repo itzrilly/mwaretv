@@ -62,9 +62,9 @@
 
 .offer {
     background-color: #fff;
-    border-top: 2px solid #000;
-    border-right: 2px solid #000;
-    border-left: 2px solid #000;
+    /* border-top: 2px solid #000; */
+    border-right: 1px solid #0d41e1;
+    border-left: 1px solid #0d41e1;
     /* color: #0d41e1; */
     height: 100%;
     width: 100%;
@@ -72,11 +72,17 @@
     flex-direction: column;
     justify-content: space-between;
     font-weight: bold;
+    border-bottom-left-radius: 10px;
+    border-radius: 10px;
 }
 
 .offer > h1 {
-    border-bottom: 2px solid #000;
-    color: #0d41e1;
+    /* border-bottom: 2px solid #000; */
+    background-color: #4169e0;
+    color: #fff ;
+    border-radius: 10px;
+    /* border-top-right-radius: 10px;
+    border-top-left-radius: 10px; */
 }
 
 .offer > h2:nth-child(4) {
@@ -143,7 +149,7 @@
     }
 
     .offer {
-        border: 2px solid #000;
+        border: 1px solid #0d41e1;
     }
 
     .t-offer {
