@@ -58,9 +58,11 @@ function Offer({ signOut }) {
 
         axios(config).then(function (response) {
 
+            console.log(response.data);
+
             if(response.data.subscribeCRM.status == true) {
                 if(response.data.checkExistMWare.status == true) {
-                    if(response.data.getSubscriberDetails.status == false) {
+                    if(response.data.smstoUser.status == true) {
                         setLoading(false);
                         localStorage.setItem('result_code', 0);
                         navigate("/msg", { replace: true });
